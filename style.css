@@ -1,0 +1,398 @@
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Orbitron', sans-serif;
+        transition: background 0.4s, color 0.4s;
+    }
+
+    body,
+    .calculator,
+    .history,
+    button,
+    #display,
+    h1 {
+        transition: all 0.5s ease-in-out;
+    }
+
+
+    body.dark {
+        background: #111;
+    }
+
+    body.neon {
+        background: #203a43
+    }
+
+    .container {
+        display: flex;
+        gap: 0px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .calculator {
+        position: relative;
+        width: 420px;
+        max-width: 90vw;
+        border-radius: 0px 20px 20px 0px;
+        padding: 25px;
+        color: #fff;
+        height: 580px;
+        display: grid;
+        grid-template-rows: repeat(10, 1fr);
+        transition: all 0.4s ease-in-out;
+    }
+
+    body.dark .calculator {
+        background: #2b2b2b;
+        color: #fff;
+    }
+
+    body.neon .calculator {
+        background: linear-gradient(145deg, #0a0f1f, #111827);
+        color: #fff;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .history {
+        width: 420px;
+        max-width: 90vw;
+        border-radius: 20px 0px 0px 20px;
+        padding: 25px;
+        height: 580px;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.4s ease-in-out;
+        overflow-y: auto;
+        scrollbar-width: thin;
+    }
+
+    body.dark .history {
+        background: #252525;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        color: #fff;
+        scrollbar-color: #fff #333;
+    }
+
+    body.neon .history {
+        background: url("https://i.pinimg.com/1200x/76/9d/40/769d40f73703f7a4ff5c95eb2bbb173e.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        color: #18bbb6b4;
+        scrollbar-color: #00fff7 #1e1e2f;
+    }
+
+    .history h1 {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    body.dark .history h1 {
+        color: #fff;
+    }
+
+    body.neon .history h1 {
+        color: #00f6ff;
+    }
+
+    .history h2 {
+        display: none;
+    }
+
+    #historyList {
+        flex-grow: 1;
+        overflow-y: auto;
+        border-radius: 10px;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    body.dark #historyList {
+        background: url("history.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: #fff;
+    }
+
+    body.neon #historyList {
+        background: linear-gradient(145deg, #0f172a, #111827);
+        color: #18bbb6b4;
+    }
+
+    #historyList p {
+        margin: 5px 0;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ffffff38;
+    }
+
+    .clear-history {
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 0;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: all 0.3s;
+    }
+
+    body.dark .clear-history {
+        background: #fff;
+        color: #111;
+    }
+
+    body.neon .clear-history {
+        background: #00f6ff;
+        color: #0f172a;
+    }
+
+    body.neon .clear-history:hover {
+        background: #ff6666;
+    }
+
+    body.dark .clear-history:hover {
+        background: #ff6666;
+    }
+
+    #display {
+        width: calc(100% - 30px);
+        height: 60px;
+        border: none;
+        border-radius: 15px;
+        font-size: 28px;
+        padding-left: 15px;
+        padding-right: 15px;
+        text-align: right;
+        margin-bottom: 20px;
+    }
+
+    body.dark #display {
+        background: #fff;
+        color: #333;
+    }
+
+    body.neon #display {
+        background: linear-gradient(145deg, #0f172a, #111827);
+        color: #00f6ff;
+        box-shadow: inset 0 5px 10px rgba(0, 255, 247, 0.2);
+    }
+
+    .buttons {
+        grid-row-start: 3;
+        grid-row-end: 11;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(25, 1fr);
+        gap: 10px;
+    }
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-row: span 3;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 15px 0;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+    }
+
+    body.dark button {
+        background: #444;
+        color: #fff;
+    }
+
+    body.neon button {
+        background: linear-gradient(145deg, #00f6ff40, #00e6d030);
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.15);
+        color: #00fff7;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+    }
+
+    body.dark button:hover {
+        background: #fff;
+        color: #111;
+    }
+
+    body.neon button:hover {
+        background: #00fff7;
+        color: #111827;
+    }
+
+    button:active {
+        transform: translateY(2px);
+    }
+
+    body.neon button:active {
+        box-shadow: 0 2px #0d0d14;
+    }
+
+    body.neon .white{
+        background: #1ae3dc;
+        color: #0a0f1f;
+    }
+
+    body.dark .white{
+        background: #fff;
+        color: #585858;
+    }
+
+    .space {
+        grid-column-start: 1;
+        grid-column-end: 7;
+        grid-row: span 1;
+        box-shadow: none;
+        cursor: default;
+    }
+
+    .double {
+        grid-row-start: 20;
+        grid-row-end: 26;
+        grid-column-start: 6;
+        grid-column-end: 7;
+        background: #1ae3dc;
+        color: #0a0f1f;
+    }
+
+    body.dark .double {
+        background: #fff;
+        color: #585858;
+    }
+
+    body.neon .double {
+        background: #1ae3dc;
+        color: #0a0f1f;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    body.neon h1 {
+        color: #00f6ff;
+    }
+
+    body.dark h1 {
+        color: #fff;
+    }
+
+
+    /* Responsive */
+    @media (max-width: 900px) {
+        .container {
+            position: relative;
+            /* parent for absolute children */
+            width: 100%;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .calculator {
+            position: absolute;
+            top: 70px;
+            right: 10px;
+            width: calc(100% - 100px);
+            height: 70vh;
+            z-index: 1;
+            /* default behind history */
+            transition: all 0.5s ease;
+        }
+
+        .history {
+            opacity: 0.3;
+            position: absolute;
+            top: 70px;
+            left: 10px;
+            width: calc(100% - 100px);
+            height: 70vh;
+            z-index: 0;
+            /* default behind calculator */
+            transition: all 0.5s ease;
+        }
+
+        .history h2 {
+            display: block;
+            color: #fff;
+            text-align: left;
+            font-size: 25px;
+            position: absolute;
+            text-transform: uppercase;
+            top: 50%;
+            left: -50px;
+            transform: rotate(-90deg);
+            transition: all 0.5s ease;
+        }
+
+
+        .history.active h2 {
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        /* When history is active */
+        .history.active {
+            z-index: 2;
+            opacity: 1;
+            transition: all 0.5s ease;
+        }
+
+        .calculator.behind {
+            opacity: 0.3;
+            z-index: 0;
+            transition: all 0.5s ease;
+        }
+
+        #display {
+            font-size: 22px;
+            height: 50px;
+        }
+
+        button {
+            font-size: 14px;
+            padding: 12px 0;
+        }
+    }
+
+    /* Theme Toggle Button */
+    #toggleBtn {
+        position: absolute;
+        top: 0px;
+        right: 10px;
+        border-radius: none;
+        font-size: 25px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        background: transparent;
+        color: none;
+        box-shadow: none;
+        transition: all 0.4s;
+        z-index: 10;
+    }
+
+    body.dark #toggleBtn {
+        color: 🔘;
+    }
+
+    body.neon #toggleBtn::before {
+        content: 🔵;
+    }
+
+    #toggleBtn:hover {
+        background: none;
+        box-shadow: none;
+
+    }
+

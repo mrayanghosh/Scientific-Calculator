@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ✅ Basic Meta Tags (keep at top) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ Google Site Verification -->
+    <!-- Add your Google Search Console verification meta tag here after verifying ownership -->
+    <!-- Example: <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE"> -->
+
+    <!-- ✅ Canonical URL -->
+    <meta name="description"
+        content="Smart Scientific Calculator supporting trigonometry, logarithms, exponentials, factorials, permutations, and combinations, with automatic history saving.">
+    <meta name="author" content="Ayan Ghosh">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mrayanghosh.github.io/Scientific-Calculator/">
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png" sizes="16x16">
+
+    <!-- ✅ Social Media: Open Graph -->
+    <meta property="og:title" content="Smart Scientific Calculator with Persistent History">
+    <meta property="og:description"
+        content="Smart Scientific Calculator supporting trigonometry, logarithms, exponentials, factorials, permutations, and combinations, with automatic history saving.">
+    <meta property="og:url" content="https://mrayanghosh.github.io/Scientific-Calculator/">
+    <meta property="og:image" content="https://mrayanghosh.github.io/Scientific-Calculator/preview.png">
+    <meta property="og:type" content="website">
+
+    <!-- ✅ Social Media: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Smart Scientific Calculator with Persistent History">
+    <meta name="twitter:description"
+        content="Smart Scientific Calculator supporting trigonometry, logarithms, exponentials, factorials, permutations, and combinations, with automatic history saving.">
+    <meta name="twitter:image" content="https://mrayanghosh.github.io/Scientific-Calculator/preview.png">
+
+    <!-- ✅ Structured Data (JSON-LD) for Google Search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Smart Scientific Calculator",
+      "description": "Smart Scientific Calculator supporting trigonometry, logarithms, exponentials, factorials, permutations, and combinations, with automatic history saving.",
+      "url": "https://mrayanghosh.github.io/Scientific-Calculator/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "author": {
+        "@type": "Person",
+        "name": "Ayan Ghosh",
+        "url": "https://github.com/mrayanghosh"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- ✅ Title -->
+    <title>Smart Scientific Calculator with Persistent History | HTML, CSS, JS</title>
+
+    <!--✅Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <!-- ✅ CSS (Keep at bottom of <head>) -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="dark">
+    <div class="container">
+        <!-- History Panel -->
+        <div class="history" id="historyPanel">
+            <h1>History</h1>
+            <h2>History</h2>
+            <div id="historyList"></div>
+            <button class="clear-history" onclick="clearHistory()">Clear History</button>
+        </div>
+
+        <!-- Calculator -->
+        <div class="calculator">
+            <h1>Scientific Calculator
+                <button id="toggleBtn">🔘</button>
+            </h1>
+            <input type="text" id="display" placeholder="0" readonly />
+
+            <div class="buttons">
+                <button onclick="appendPermutation()">nPr</button>
+                <button onclick="appendCombination()">nCr</button>
+                <button onclick="memoryClear()">MC</button>
+                <button onclick="memoryRecall()">MR</button>
+                <button onclick="memoryAdd()">M+</button>
+                <button onclick="memorySubtract()">M-</button>
+
+                <button onclick="appendFactorial()">n!</button>
+                <button onclick="square()">x²</button>
+                <button onclick="appendNthRootPrefix()"><sup>n</sup>√</button>
+                <button onclick="appendPower()">^</button>
+                <button onclick="appendSqrt()">√</button>
+                <button onclick="appendValue('%')">%</button>
+
+                <button onclick="appendTrig('sin')">sin</button>
+                <button onclick="appendTrig('cos')">cos</button>
+                <button onclick="appendTrig('tan')">tan</button>
+                <button onclick="appendLogarithmic('log')">log</button>
+                <button onclick="appendLogarithmic('ln')">ln</button>
+                <button onclick="appendExp()">eˣ</button>
+
+                <button onclick="appendTrig('asin')">asin</button>
+                <button onclick="appendTrig('acos')">acos</button>
+                <button onclick="appendTrig('atan')">atan</button>
+                <button onclick="appendSymbol('π','Math.PI')">π</button>
+                <button onclick="appendSymbol('e','Math.E')">e</button>
+                <button onclick="reciprocal()">1/x</button>
+
+                <div class="space"></div>
+
+                <button onclick="appendValue('7')">7</button>
+                <button onclick="appendValue('8')">8</button>
+                <button onclick="appendValue('9')">9</button>
+                <button id="toggleDegRad" onclick="toggleDegRad()">DEG</button>
+                <button onclick="deleteLast()">DEL</button>
+                <button class="white" onclick="clearDisplay()">C</button>
+
+                <button onclick="appendValue('4')">4</button>
+                <button onclick="appendValue('5')">5</button>
+                <button onclick="appendValue('6')">6</button>
+                <button onclick="appendValue('(')">(</button>
+                <button onclick="appendValue(')')">)</button>
+                <button onclick="appendValue(lastAns)">Ans</button>
+
+                <button onclick="appendValue('1')">1</button>
+                <button onclick="appendValue('2')">2</button>
+                <button onclick="appendValue('3')">3</button>
+                <button onclick="appendSymbol('×','*')">×</button>
+                <button onclick="appendSymbol('÷','/')">÷</button>
+
+                <button onclick="appendValue('0')">0</button>
+                <button onclick="appendValue('.')">.</button>
+                <button onclick="multiplyTenPower()">×10<sup>x</sup></button>
+                <button onclick="appendSymbol('+','+')">+</button>
+                <button onclick="appendSymbol('−','-')">−</button>
+                <button class="double" onclick="calculateResult()">=</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
